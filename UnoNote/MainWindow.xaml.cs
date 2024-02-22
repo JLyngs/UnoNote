@@ -1,9 +1,7 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Collections.Generic;
 
 namespace UnoNote
 {
@@ -18,28 +16,9 @@ namespace UnoNote
             csvFiles = Directory.GetFiles("../../../NotesCSV");
             LoadNotesFromCSV();
             DisplayNotes();
-            SearchTextBox.TextChanged += SearchTextBox_TextChanged;
-            SearchBox.SelectionChanged += SearchBox_SelectionChanged;
-            PerformSearch();
+
         }
 
-        private void PerformSearch()
-        {
-            string searchText = SearchTextBox.Text.Trim();
-
-            SearchBox.Items.Clear();
-
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                foreach (var entry in notesDictionary)
-                {
-                    if (entry.Key.Contains(searchText) || entry.Value.Contains(searchText))
-                    {
-                        SearchBox.Items.Add(entry.Key);
-                    }
-                }
-            }
-        }
 
         private void LoadNotesFromCSV()
         {
@@ -56,20 +35,6 @@ namespace UnoNote
             foreach (string noteName in notesDictionary.Keys)
             {
                 NoteNameListBox.Items.Add(noteName);
-            }
-        }
-
-        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            PerformSearch();
-        }
-
-        private void SearchBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (SearchBox.SelectedItem != null)
-            {
-                string selectedNoteName = SearchBox.SelectedItem.ToString();
-                NoteEditorTextBox.Text = notesDictionary[selectedNoteName];
             }
         }
 
@@ -106,18 +71,18 @@ namespace UnoNote
 
                 if (!string.IsNullOrEmpty(newNoteName) && !notesDictionary.ContainsKey(newNoteName))
                 {
-                    
+
                     string noteContent = notesDictionary[oldNoteName];
                     notesDictionary.Remove(oldNoteName);
                     notesDictionary.Add(newNoteName, noteContent);
 
-                    
+
                     int selectedIndex = NoteNameListBox.SelectedIndex;
                     NoteNameListBox.Items[selectedIndex] = newNoteName;
 
                     NoteNameListBox.SelectedItem = newNoteName;
 
-                    
+
                     string oldFilePath = Path.Combine("../../../NotesCSV", oldNoteName + ".csv");
                     string newFilePath = Path.Combine("../../../NotesCSV", newNoteName + ".csv");
                     if (File.Exists(oldFilePath))

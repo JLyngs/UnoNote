@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace UnoNote
 {
@@ -15,8 +14,6 @@ namespace UnoNote
 
         public static bool PasteImageFiles(this FlowDocument doc, TextRange selection, IEnumerable<string> files)
         {
-            // Assuming you have one file that you care about, pass it off to whatever
-            // handling code you have defined.
             FlowDocument tempDoc = new FlowDocument();
             Paragraph par = new Paragraph();
             tempDoc.Blocks.Add(par);

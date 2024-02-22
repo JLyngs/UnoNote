@@ -41,6 +41,7 @@
 
                 <Button Width="25" Height="25" Content="✕" FontSize="15" Background="Transparent" BorderThickness="0" Foreground="CornflowerBlue" Click="ButtonExit"/>
             </StackPanel>
+            
 
 
                 
@@ -56,31 +57,9 @@
             <!--AddNote-->
             <Button Click="ButtonAddNewNote" Grid.Row="1" Margin="2" Width="74" Content="New Note" Background="#836FFF" Foreground="#F0F3FF" BorderThickness="1" BorderBrush="#211951"/>
             <!--AddNote-->
-            
-            
-
-
-            <!--SearchResults-->
-            
-            <TextBox x:Name="SearchTextBox" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left"
-                     Style="{StaticResource SearchTextBox}" TextChanged="SearchTextBox_TextChanged"/>
-            
-            <!--SearchResults-->
-            
-            
-
-            <!--SearchBox-->
-            
-            <ComboBox x:Name="SearchBox" Grid.Column="1" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Padding="5" Width="200" Height="40" HorizontalAlignment="Left" Style="{StaticResource SearchBox}" SelectionChanged="SearchBox_SelectionChanged"/>
-            
-            <!--SearchBox-->
-            
-            
-            
 
 
 
-            
 
 
             <!--Venstre vindue-->
@@ -98,7 +77,6 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-
             <!--Venstre vindue-->
 
 
